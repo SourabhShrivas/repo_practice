@@ -1403,7 +1403,31 @@ from prod100
 
 rank() over(partition by pname order by amt desc) from prod100
 
+--------------select product where product price is greather then average product price in same product category
+Create table produdt_0 (p_name varchar(25),p_category varchar(25), price integer);
+insert into produdt_0 (p_name, p_category,price) values('laptop','electronics',800);
+insert into produdt_0 (p_name, p_category,price) values('mobile','electronics',500);
+insert into produdt_0 (p_name, p_category,price) values('tire','auto',400);
+insert into produdt_0 (p_name, p_category,price) values('whindsield','auto',300);
+insert into produdt_0 (p_name, p_category,price) values('string','auto',700);
+insert into produdt_0 (p_name, p_category,price) values('break','auto',200);
+insert into produdt_0 (p_name, p_category,price) values('chair','office',100);
+insert into produdt_0 (p_name, p_category,price) values('table','office',150);
+insert into produdt_0 (p_name, p_category,price) values('rount table','office',300);
+insert into produdt_0 (p_name, p_category,price) values('printer','office',150);
+insert into produdt_0 (p_name, p_category,price) values('ball','sports',20);
+insert into produdt_0 (p_name, p_category,price) values('cricket bat','sports',70);
+insert into produdt_0 (p_name, p_category,price) values('stump','sports',30);
 
+select * from produdt_0
+
+select a.* from (
+select p_name, p_category, price, avg(price) over(partition by p_category order by p_category ASC) as avg_price
+from produdt_0) a
+ where a.price<a.avg_price
+
+ ---running sum
+ select p_name, p_category, price, sum(price) over(order by p_name asc) as running_sum from produdt_0
 
 
 
