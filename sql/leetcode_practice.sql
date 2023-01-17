@@ -22,6 +22,7 @@ insert into Product (product_id, product_name) values ('300', 'Samsung')
 select * from Sales
 select * from Product
 
+
 /* Write an SQL query that reports all product names of the products in the Sales 
 table along with their selling year and price.*/
 
@@ -1429,7 +1430,8 @@ from produdt_0) a
  ---running sum
  select p_name, p_category, price, sum(price) over(order by p_name asc) as running_sum from produdt_0
 
-
+ ---------------------
+ hello SOurabh testing!!
 
 
 
